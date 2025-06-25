@@ -1,0 +1,58 @@
+{-# OPTIONS_GHC -Wno-missing-export-lists #-}
+
+module Token where
+
+data TokenType
+  = LEFT_PAREN
+  | RIGHT_PAREN
+  | LEFT_BRACE
+  | RIGHT_BRACE
+  | COMMA
+  | DOT
+  | MINUS
+  | PLUS
+  | SEMICOLON
+  | SLASH
+  | STAR
+  | -- One or two character tokens
+    BANG
+  | BANG_EQUAL
+  | EQUAL
+  | EQUAL_EQUAL
+  | GREATER
+  | GREATER_EQUAL
+  | LESS
+  | LESS_EQUAL
+  | -- Literals
+    IDENTIFIER
+  | STRING
+  | NUMBER
+  | -- Keywords
+    AND
+  | CLASS
+  | ELSE
+  | FALSE
+  | FUN
+  | FOR
+  | IF
+  | NIL
+  | OR
+  | PRINT
+  | RETURN
+  | SUPER
+  | THIS
+  | TRUE
+  | VAR
+  | WHILE
+  | EOF
+  deriving (Eq, Show)
+
+data Literal = Literal deriving (Eq, Show)
+
+data Token = Token
+  { tokenType :: TokenType,
+    lexeme :: String,
+    literal :: Maybe Literal,
+    line :: Int
+  }
+  deriving (Eq, Show)
